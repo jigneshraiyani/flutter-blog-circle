@@ -8,7 +8,7 @@ class LoginPage extends StatefulWidget {
   static route() => MaterialPageRoute(
         builder: (context) => LoginPage(),
       );
-      
+
   const LoginPage({super.key});
 
   @override
@@ -66,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               AuthGradientButton(
                 title: 'Sign in',
+                onPressed: () {},
               ),
               SizedBox(
                 height: 20,
