@@ -3,17 +3,20 @@ import 'package:blog_circle/core/theme/app_pallete.dart';
 
 class AppTheme {
   static _border([Color color = AppPallete.borderColor]) => OutlineInputBorder(
-      borderSide: BorderSide(
-        color:color, 
-        width: 3.0
-      ),
-      borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: color, width: 3.0),
+        borderRadius: BorderRadius.circular(10),
       );
 
   static final darkThemeMode = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: AppPallete.backgroundColor,
     appBarTheme: AppBarTheme(
       backgroundColor: AppPallete.backgroundColor,
+    ),
+    chipTheme: ChipThemeData(
+      color: WidgetStatePropertyAll(
+        AppPallete.backgroundColor,
+      ),
+      side: BorderSide.none,
     ),
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.all(26),
