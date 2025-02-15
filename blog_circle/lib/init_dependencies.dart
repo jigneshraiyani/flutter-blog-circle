@@ -1,8 +1,19 @@
 import 'package:blog_circle/core/common/cubits/app_user/cubit/app_user_cubit.dart';
+import 'package:blog_circle/core/common/network/connection_checker.dart';
 import 'package:blog_circle/core/secrets/app_secrets.dart';
 import 'package:blog_circle/features/auth/domain/usecases/current_user.dart';
 import 'package:blog_circle/features/auth/domain/usecases/user_login.dart';
 import 'package:blog_circle/features/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:blog_circle/features/blog/data/datasources/blog_local_data_source.dart';
+import 'package:blog_circle/features/blog/data/datasources/blog_remote_data_source.dart';
+import 'package:blog_circle/features/blog/data/repositories/blog_repositories_imp.dart';
+import 'package:blog_circle/features/blog/domain/repositories/blog_repository.dart';
+import 'package:blog_circle/features/blog/domain/usecases/get_all_blogs.dart';
+import 'package:blog_circle/features/blog/domain/usecases/upload_blog.dart';
+import 'package:blog_circle/features/blog/presentation/bloc/blog_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get_it/get_it.dart';
 import 'package:blog_circle/features/auth/domain/repository/auth_repository.dart';
@@ -10,56 +21,4 @@ import 'package:blog_circle/features/auth/data/data_sources/auth_remote_data_sou
 import 'package:blog_circle/features/auth/data/repositories/auth_repository_imp.dart';
 import 'package:blog_circle/features/auth/domain/usecases/user_sign_up.dart';
 
-final serviceLocator = GetIt.instance;
-
-Future<void> initDependencies() async {
-  _initAuth();
-  final supabase = await Supabase.initialize(
-    url: AppSecrets.supabaseUrl,
-    anonKey: AppSecrets.supabaseAnonKey,
-  );
-  serviceLocator.registerLazySingleton(() => supabase.client);
-
-  serviceLocator.registerLazySingleton(
-    () => AppUserCubit(),
-  );
-}
-
-void _initAuth() {
-  serviceLocator
-    ..registerFactory<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImp(
-        serviceLocator(),
-      ),
-    )
-    // Repository
-    ..registerFactory<AuthRepository>(
-      () => AuthRepositoryImp(
-        serviceLocator(),
-      ),
-    )
-    // Use cases
-    ..registerFactory(
-      () => UserSignUp(
-        authRepository: serviceLocator(),
-      ),
-    )
-    ..registerFactory(
-      () => UserLogin(
-        authRepository: serviceLocator(),
-      ),
-    )
-    ..registerFactory(
-      () => CurrentUser(
-        authRepository: serviceLocator(),
-      ),
-    )
-    ..registerLazySingleton(
-      () => AuthBloc(
-        userSignUp: serviceLocator(),
-        userLogin: serviceLocator(),
-        currentUser: serviceLocator(),
-        appUserCubit: serviceLocator(),
-      ),
-    );
-}
+part 'init_dependencies.main.dart';

@@ -19,7 +19,7 @@ class BlogEditor extends StatelessWidget {
       ),
       maxLines: null,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return '$hintText is missing';
         }
         return null;
