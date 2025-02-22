@@ -1,4 +1,5 @@
 import 'package:blog_circle/core/common/network/connection_checker.dart';
+import 'package:blog_circle/core/constants/constants.dart';
 import 'package:blog_circle/core/error/failure.dart';
 import 'package:blog_circle/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:blog_circle/core/common/entities/user.dart';
@@ -47,7 +48,7 @@ class AuthRepositoryImp implements AuthRepository {
     try {
       if (!await (connectionChecker.isConnected)) {
         return left(
-          Failure('No internet connection'),
+          Failure(Constants.noConnectionErrorMessage),
         );
       }
       final user = await fn();
