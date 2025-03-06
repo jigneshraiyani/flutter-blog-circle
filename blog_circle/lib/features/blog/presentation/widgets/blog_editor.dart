@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fpdart/fpdart.dart';
 
 class BlogEditor extends StatelessWidget {
   final String hintText;

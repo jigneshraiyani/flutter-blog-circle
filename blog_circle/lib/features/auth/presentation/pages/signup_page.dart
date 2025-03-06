@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:blog_circle/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blog_circle/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blog_circle/core/common/widget/loader.dart';
 
 class SignupPage extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -59,7 +58,6 @@ class _SignupPageState extends State<SignupPage> {
             if (state is AuthLoading) {
               return const Loader();
             }
-
             return Form(
               key: formKey,
               child: Column(
@@ -99,10 +97,6 @@ class _SignupPageState extends State<SignupPage> {
                     title: 'Sign Up',
                     onPressed: () {
                       if (formKey.currentState!.validate() == true) {
-                        context.read<AuthBloc>().add(AuthSignUp(
-                            name: 'name',
-                            email: 'email',
-                            password: 'password'));
                         context.read<AuthBloc>().add(
                               AuthSignUp(
                                 name: nameController.text.trim(),
@@ -118,7 +112,6 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, LoginPage.route());
                       Navigator.push(context, LoginPage.route());
                     },
                     child: RichText(

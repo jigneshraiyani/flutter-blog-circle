@@ -20,6 +20,12 @@ class BlogPage extends StatefulWidget {
 
 class _BlogPageState extends State<BlogPage> {
   @override
+  void initState() {
+    super.initState();
+    context.read<BlogBloc>().add(BlogFetchAllBlogs());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

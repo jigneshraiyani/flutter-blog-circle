@@ -1,12 +1,9 @@
 import 'package:blog_circle/core/common/cubits/app_user/cubit/app_user_cubit.dart';
 import 'package:blog_circle/features/auth/presentation/bloc/bloc/auth_bloc.dart';
-import 'package:blog_circle/features/blog/presentation/bloc/blog_bloc.dart';
 import 'package:blog_circle/features/blog/presentation/pages/blog_page.dart';
-import 'package:blog_circle/init_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_circle/core/theme/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:blog_circle/features/auth/presentation/pages/signup_page.dart';
 import 'package:blog_circle/features/auth/presentation/pages/login_page.dart';
 
 class App extends StatefulWidget {

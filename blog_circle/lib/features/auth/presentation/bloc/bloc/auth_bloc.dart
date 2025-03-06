@@ -1,5 +1,4 @@
 import 'package:blog_circle/core/common/cubits/app_user/cubit/app_user_cubit.dart';
-import 'package:blog_circle/core/error/failure.dart';
 import 'package:blog_circle/core/usecase/usecase.dart';
 import 'package:blog_circle/features/auth/domain/usecases/current_user.dart';
 import 'package:blog_circle/features/auth/domain/usecases/user_login.dart';
