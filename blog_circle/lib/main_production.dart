@@ -1,4 +1,5 @@
 import 'package:blog_circle/app.dart';
+import 'package:blog_circle/app_config.dart';
 import 'package:blog_circle/core/common/cubits/app_user/cubit/app_user_cubit.dart';
 import 'package:blog_circle/features/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:blog_circle/features/blog/presentation/bloc/blog_bloc.dart';
@@ -7,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
+  AppConfig appConfig = AppConfig(
+    appName: 'Blog Circel Prod',
+    flavor: 'prod',
+  );
   WidgetsFlutterBinding.ensureInitialized();
   await initDependencies();
   runApp(MultiBlocProvider(
@@ -21,8 +26,8 @@ void main() async {
         create: (_) => serviceLocator<BlogBloc>(),
       ),
     ],
-    child: const App(
-      title: 'Blog Circle',
+    child: App(
+      title: appConfig.flavor,
     ),
   ));
 }
