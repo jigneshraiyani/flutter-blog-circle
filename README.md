@@ -4,8 +4,8 @@ Blog Circle is a mobile application designed for bloggers and content creators t
 ---
 
 ## 🚀 Screenshots
-- <img src="screenshot/Sign_up.png" width="300" height="650"> - <img src="screenshot/Login.png" width="300" height="650"> - <img src="screenshot/Blog.png" width="300" height="650">
-- <img src="screenshot/Blog_list.png" width="300" height="650"> - <img src="screenshot/Blog_detail.png" width="300" height="650">
+  <img src="screenshot/Sign_up.png" width="300" height="650"> <img src="screenshot/Login.png" width="300" height="650"> <img src="screenshot/Blog.png" width="300" height="650">
+  <img src="screenshot/Blog_list.png" width="300" height="650">  <img src="screenshot/Blog_detail.png" width="300" height="650">
 
 ## Features:
 
